@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Machine Aid</title>
+    <meta charset="UTF-8">       
+    <link rel="icon" type="image/png" href="wallet.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- IMPORTS -->
+    
+    <!-- Import Bootstrap and JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Import CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Importing Javascript -->
+    <script src="script.js"></script>
+
+</head>
+<body>
+    <div id="mainContainer">
+    <h1 class="col-md-8"> What investments should I add to my wallet?</h1>
+    <div id="description"> 
+        Are you having trouble picking investments and you are in a tight budget? Fear not! Just enter them here
+        and the knapsack calculator will help you decide!
+    </div>
+
+    
+        <label for="knapsack" id="knapsackSizeDiv"><strong>Maximum wallet budget</strong></label>
+        <input type="number" min="1"  name = "knapsack" id="knapsackSize" placeholder="12" class="col-md-1">
+    
+    <button type="button" class="btn btn-primary col-md-3" id="btnAddNewItem">Add a new item</button>
+
+    <div id="cardContainer" class="col-md-3"> </div>
+
+
+    <p id="errorMessage"> Please fill up all fields! </p>
+
+    <button type="button" class="btn btn-success" data-toggle="modal" id="btnConfirmItems">Confirm Courses</button>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm Options</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                
+                <div id="modalCrypto"></div>
+                <div id="modalWeights"></div>
+                <div id="modalValues"></div>
+                <br>
+                <div id="modalKnapsack"></div>
+             
+
+              
+                <br>
+
+                <div>
+
+               
+                <div id="resultBreakdown">
+                    <p id="breakdownHeader"> <strong id="breakdownHeaderText"> Dynamic Solution Breakdown</strong></p>
+                    <table class="table" id="tableResults">
+                      <thead>
+                        <tr>
+                          <th scope="col">Cryptocurrency</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Profit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tableBody">
+                      </tbody>
+                    </table>
+                </div>
+
+                <div id="optimalResult"></div>
+
+        
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="btnCalculateDynamic">Calculate profit dynamic</button>
+              <button type="button" class="btn btn-primary" id="btnCalculateGreedy">Calculate profit greedy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+</body>
+</html>
