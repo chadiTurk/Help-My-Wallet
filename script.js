@@ -6,6 +6,7 @@ $( document ).ready(function() {
     var Item =  [];
     var finalItems = [];
     var knapsackSize;
+    var startTime, endTime;
     
     /**
      * Sets default values for knapsack size, input weight/price and profit/value
@@ -122,6 +123,7 @@ $( document ).ready(function() {
         $("#modalWeights").text(weights);
         $("#modalValues").text(values);
         $("#modalKnapsack").text(knapsack);
+        $("#runTime").text(" ");
         
         /**
          * If there are empty input fields, don't show the modal and highlight the empty fields 
@@ -150,18 +152,31 @@ $( document ).ready(function() {
 
     $("#btnCalculateDynamic").click(function(){
 
+        start();
         $("#resultBreakdown").css("display","block");
         $("#breakdownHeaderText").text("Dynamic Solution Breakdown")
         var optimalResult =  knapsackDynamic(knapsackSize,weightsArray,valuesArray,weightsArray.length);
         $("#optimalResult").text(" The optimal profit for dynamic solution is : " + optimalResult);
+
+
+
+        end();
+
+        
     });
 
     $("#btnCalculateGreedy").click(function(){
+
+        start();
 
         $("#resultBreakdown").css("display","block");
         $("#breakdownHeaderText").text("Greedy Solution Breakdown")
         var value =  knapsackGreedy(knapsackSize,cryptoArray,weightsArray,valuesArray,weightsArray.length);
         $("#optimalResult").text(" The optimal profit for greedy solution is : " + value);
+
+        end();
+
+        
     });
 
 
@@ -405,6 +420,19 @@ $( document ).ready(function() {
     deleteDiv();
 
     
+    function start() {
+        startTime = new Date();
+      };
+      
+      function end() {
+        endTime = new Date();
+        var timeDiff = endTime - startTime; //in ms
+        // strip the ms     
+        // get seconds 
+        var milliseconds = Math.round(timeDiff);
+
+        $("#runTime").text("Runtime in milliseconds: " + milliseconds);
+      }
 
     
 
