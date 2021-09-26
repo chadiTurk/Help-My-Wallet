@@ -327,7 +327,8 @@ $( document ).ready(function() {
 
             /**
              * If the capacity of the knapsack/wallet is not full yet, just add the item with the 
-             * highest profit/price ratio
+             * highest profit/price ratio (there are other variations of this such as sorting it based on
+             * the highest value or lowest weight instead of a ratio, but the ratio yields better results)
              */
              
             if (curWeight + Item[i].weight <= capacity) {
@@ -341,23 +342,7 @@ $( document ).ready(function() {
                 })
             }
      
-           /**
-            * Once the knapsack cannot accept the full weight of the next item, it will
-            * add a fractional part of it instead based on the reamining capacity
-            */
 
-            else {
-                var remain = capacity - curWeight;
-                finalvalue += Item[i].value * (remain /Item[i].weight);
-
-                finalItems.push({
-                    crypto:Item[i].crypto,
-                    weight:(remain/Item[i].weight) * Item[i].weight,
-                    value:Item[i].value * (remain/Item[i].weight)
-                })
-
-                break;
-            }
         }
 
         /**
